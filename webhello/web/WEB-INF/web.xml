@@ -6,7 +6,7 @@
 
     <!--<servlet>-->
         <!--<servlet-name>HelloServletName</servlet-name>-->
-        <!--<servlet-class>HelloServlet</servlet-class>-->
+        <!--<servlet-class>UserServlet</servlet-class>-->
     <!--</servlet>-->
 
     <!--<servlet-mapping>-->

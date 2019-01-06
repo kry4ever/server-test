@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/second")
-public class HelloServlet extends HttpServlet {
+@WebServlet("/user_info")
+public class UserServlet extends HttpServlet {
 
     private User user;
     private Gson gson = new Gson();
