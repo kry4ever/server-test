@@ -2,6 +2,7 @@ package com.example.hasee_pc.localtest;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -45,7 +46,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
                         // 步骤6：处理返回的数据结果
-//                        Log.d("guyan", response.body().name);
+                        Log.d("guyan", response.isSuccessful() + "");
+                        Log.d("guyan", response.body() + "");
+                        Log.d("guyan", response.errorBody() + "");
+                        Log.d("guyan", response.message() + "");
+                        Log.d("guyan", response.code() + "");
+                        Log.d("guyan", response.raw() + "");
                         if (response.isSuccessful()) {
                             String token = response.body();
                             if (token != null) {
