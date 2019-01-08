@@ -6,12 +6,16 @@
 
     <!--<servlet>-->
         <!--<servlet-name>HelloServletName</servlet-name>-->
-        <!--<servlet-class>UserServlet</servlet-class>-->
+        <!--<servlet-class>com.guyan.test.UserServlet</servlet-class>-->
     <!--</servlet>-->
 
     <!--<servlet-mapping>-->
         <!--<servlet-name>HelloServletName</servlet-name>-->
         <!--<url-pattern>/first</url-pattern>-->
     <!--</servlet-mapping>-->
+
+    <listener>
+        <listener-class>com.guyan.test.AppLoader</listener-class>
+    </listener>
 
 </web-app>
