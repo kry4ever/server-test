@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.webkit.CookieManager;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -37,40 +38,42 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.go).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServerApi request = retrofit.create(ServerApi.class);
-                //通过接口方法获取请求对象，里面对要发送的请求进行了封装
-                Call<String> call = request.getUser("kry", "123456");
-                //步骤5:发送网络请求(异步)
-                call.enqueue(new Callback<String>() {
-                    //请求成功时回调
-                    @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
-                        // 步骤6：处理返回的数据结果
-                        Log.d("guyan", response.isSuccessful() + "");
-                        Log.d("guyan", response.body() + "");
-                        Log.d("guyan", response.errorBody() + "");
-                        Log.d("guyan", response.message() + "");
-                        Log.d("guyan", response.code() + "");
-                        Log.d("guyan", response.raw() + "");
-                        if (response.isSuccessful()) {
-                            String token = response.body();
-                            if (token != null) {
-                                Toast.makeText(MainActivity.this, token + "", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(MainActivity.this, "empty token", Toast.LENGTH_SHORT).show();
-                            }
-                        } else {
-                            Toast.makeText(MainActivity.this, "token error!!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    //请求失败时回调
-                    @Override
-                    public void onFailure(Call<String> call, Throwable throwable) {
-//                        Log.e("guyan", "请求失败 " + throwable.getMessage());
-                        Toast.makeText(MainActivity.this, "failed " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                String ss = CookieManager.getInstance().getCookie("api.feiliao.com");
+                Log.d("guyan", "ss is " + ss);
+//                ServerApi request = retrofit.create(ServerApi.class);
+//                //通过接口方法获取请求对象，里面对要发送的请求进行了封装
+//                Call<String> call = request.getUser("kry", "123456");
+//                //步骤5:发送网络请求(异步)
+//                call.enqueue(new Callback<String>() {
+//                    //请求成功时回调
+//                    @Override
+//                    public void onResponse(Call<String> call, Response<String> response) {
+//                        // 步骤6：处理返回的数据结果
+//                        Log.d("guyan", response.isSuccessful() + "");
+//                        Log.d("guyan", response.body() + "");
+//                        Log.d("guyan", response.errorBody() + "");
+//                        Log.d("guyan", response.message() + "");
+//                        Log.d("guyan", response.code() + "");
+//                        Log.d("guyan", response.raw() + "");
+//                        if (response.isSuccessful()) {
+//                            String token = response.body();
+//                            if (token != null) {
+//                                Toast.makeText(MainActivity.this, token + "", Toast.LENGTH_SHORT).show();
+//                            } else {
+//                                Toast.makeText(MainActivity.this, "empty token", Toast.LENGTH_SHORT).show();
+//                            }
+//                        } else {
+//                            Toast.makeText(MainActivity.this, "token error!!", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    //请求失败时回调
+//                    @Override
+//                    public void onFailure(Call<String> call, Throwable throwable) {
+////                        Log.e("guyan", "请求失败 " + throwable.getMessage());
+//                        Toast.makeText(MainActivity.this, "failed " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
             }
         });
     }
